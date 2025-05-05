@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Objednávka - BabaShop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("YOUR_EMAILJS_USER_ID");
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800 p-6">
+  <h1 class="text-2xl font-bold mb-4">Dokončenie objednávky</h1>
+  <div id="summary" class="mb-6 bg-white p-4 rounded shadow"></div>
+
+  <form id="order-form" class="space-y-4">
+    <input type="text" name="name" placeholder="Meno a priezvisko" class="w-full p-2 border rounded" required />
+    <input type="email" name="email" placeholder="Email" class="w-full p-2 border rounded" required />
+    <select name="payment" class="w-full p-2 border rounded" required>
+      <option value="">Spôsob platby</option>
+      <option value="Dobierka">Dobierka</option>
+      <option value="Bankový prevod">Bankový prevod</option>
+    </select>
+    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white p-2 rounded">Odoslať objednávku</button>
+  </form>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    if (cart) {
+      document.getElementById('summary').innerHTML = `
+        <h2 class="text-xl font-semibold">Objednávate:</h2>
+        <p class="mt-2">${cart.name} - ${cart.price.toFixed(2)} €</p>
+        <input type="hidden" name="product" value="${cart.name}">
+      `;
+    }
+
+    document.getElementById('order-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
+        .then(() => {
+          alert('Objednávka bola úspešne odoslaná!');
+          localStorage.removeItem('cart');
+          window.location.href = 'index.html';
+        }, (err) => {
+          alert('Chyba pri odosielaní objednávky.');
+          console.error(err);
+        });
+    });
+  </script>
+</body>
+</html>

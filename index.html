@@ -1,33 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elektro Eshop</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BabaShop - Elektro e-shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
-        <h1>Elektro Eshop</h1>
-        <div id="cart">
-            🛒 Košík: <span id="cart-count">0</span>
-        </div>
-    </header>
-    <main id="products"></main>
-    <section id="checkout">
-        <h2>Objednávka</h2>
-        <form id="order-form" action="https://formspree.io/f/mwkgegyg" method="POST">
-            <input type="text" name="name" placeholder="Meno" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <select name="payment" required>
-                <option value="">Zvoľte platbu</option>
-                <option value="dobierka">Dobierka</option>
-                <option value="prevodom">Bankovým prevodom</option>
-            </select>
-            <input type="hidden" name="products" id="form-products">
-            <button type="submit">Odoslať objednávku</button>
-        </form>
-    </section>
-    <script src="script.js"></script>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-blue-700 text-white p-4 text-center text-2xl font-bold">BabaShop</header>
+
+  <main class="p-6">
+    <h1 class="text-3xl mb-4 font-semibold">Naše produkty</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="product-list">
+      <!-- Produkty sa načítajú pomocou JS -->
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-white text-center py-4 mt-6">&copy; 2025 BabaShop. Všetky práva vyhradené.</footer>
+
+  <script src="cart.js"></script>
 </body>
 </html>
