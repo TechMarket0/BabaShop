@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elektro Eshop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Elektro Eshop</h1>
+        <div id="cart">
+            🛒 Košík: <span id="cart-count">0</span>
+        </div>
+    </header>
+    <main id="products"></main>
+    <section id="checkout">
+        <h2>Objednávka</h2>
+        <form id="order-form" action="https://formspree.io/f/mwkgegyg" method="POST">
+            <input type="text" name="name" placeholder="Meno" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <select name="payment" required>
+                <option value="">Zvoľte platbu</option>
+                <option value="dobierka">Dobierka</option>
+                <option value="prevodom">Bankovým prevodom</option>
+            </select>
+            <input type="hidden" name="products" id="form-products">
+            <button type="submit">Odoslať objednávku</button>
+        </form>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
