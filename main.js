@@ -1,0 +1,1 @@
+// Tento súbor bude obsahovať skompilovaný React kód (v reálnom projekte cez Vite/webpack)

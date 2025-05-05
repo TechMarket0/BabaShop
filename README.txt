@@ -1,0 +1,1 @@
+Toto je len ilustračný zip s HTML štruktúrou. Skutočný e-shop beží v React prostredí.
